@@ -12,7 +12,7 @@ import {
 import {Column as Col, Row} from 'react-native-flexbox-grid';
 import RoundedButton from '../components/roundedButton';
 
-function SplashScreen(navigation) {
+function SplashScreen({navigation}) {
   return (
     <>
       <SafeAreaView>
