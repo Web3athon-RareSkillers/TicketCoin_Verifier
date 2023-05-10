@@ -61,6 +61,11 @@ function Onboarding({navigation}) {
       setAuthorizationInProgress(false);
     }
   }, [authorizationInProgress, authorizeSession]);
+
+  const skipConnection = () => {
+    navigation.navigate('Home');
+  };
+
   const handleConnectPress1 = useCallback(async () => {
     await transact(async wallet => {
       // Transact starts a session with the wallet app during which our app
@@ -150,7 +155,10 @@ function Onboarding({navigation}) {
               />
             </Row>
             <Row size={12} style={{marginTop: 20}}>
-              <TransparentButton title={'Skip for now'} />
+              <TransparentButton
+                title={'Skip for now'}
+                onPress={() => skipConnection()}
+              />
             </Row>
           </Col>
         </View>
