@@ -5,6 +5,7 @@ import {Column as Col, Row} from 'react-native-flexbox-grid';
 import SearchBar from '../components/searchBar';
 import CarouselComponent from '../components/CarouselComponent';
 import RoundedButton from '../components/roundedButton';
+// import Footer from '../components/Footer';
 
 export default function Home() {
   const featuredEventsSliderData = [
@@ -178,6 +179,9 @@ export default function Home() {
             subTitle={'+   Verify Attendee'}
           />
         </View>
+        {/* <View style={styles.footerContainer}>
+          <Footer></Footer>
+        </View> */}
       </View>
     </>
   );
@@ -191,7 +195,16 @@ const styles = StyleSheet.create({
   floatingContainer: {
     position: 'absolute',
     width: 160,
-    bottom: 144,
+    bottom: 120,
     right: 16,
+  },
+  footerContainer: {
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    height: 80,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    left: 0,
   },
 });
