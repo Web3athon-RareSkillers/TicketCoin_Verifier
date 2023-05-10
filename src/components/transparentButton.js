@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Dimensions,
-  View,
-} from 'react-native';
-const SCREEN_WIDTH = Dimensions.get('window').width;
+import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 
 const TransparentButton = ({title, onPress}) => {
   return (
@@ -24,12 +17,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderColor: '#1F1F1F',
     borderWidth: 1,
-    width: SCREEN_WIDTH - 32,
+    flex: 1,
   },
   gradient: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: SCREEN_WIDTH - 32,
+    flex: 1,
     height: 50,
   },
   title: {

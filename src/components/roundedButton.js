@@ -1,9 +1,8 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet, Dimensions} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const RoundedButton = ({title, onPress}) => {
+const RoundedButton = ({title, subTitle, onPress}) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
       <LinearGradient
@@ -11,7 +10,11 @@ const RoundedButton = ({title, onPress}) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={styles.gradient}>
-        <Text style={styles.title}>{title}</Text>
+        {title ? (
+          <Text style={styles.title}>{title}</Text>
+        ) : (
+          <Text style={styles.subTitle}>{subTitle}</Text>
+        )}
       </LinearGradient>
     </TouchableOpacity>
   );
@@ -21,17 +24,24 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 30,
     overflow: 'hidden',
-    width: SCREEN_WIDTH - 32,
+    flex: 1,
   },
   gradient: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: SCREEN_WIDTH - 32,
+    flex: 1,
     height: 50,
   },
   title: {
     color: 'white',
     fontSize: 16,
+    fontFamily: 'NexaLight',
+    textAlign: 'center',
+  },
+  subTitle: {
+    color: 'white',
+    fontSize: 12,
+    lineHeight: 16,
     fontFamily: 'NexaLight',
     textAlign: 'center',
   },
