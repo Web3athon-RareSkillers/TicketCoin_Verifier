@@ -6,7 +6,6 @@ import {
   Dimensions,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const TransparentButton = ({title, onPress}) => {
@@ -25,11 +24,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderColor: '#1F1F1F',
     borderWidth: 1,
+    width: SCREEN_WIDTH - 64,
   },
   gradient: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 305,
+    width: SCREEN_WIDTH - 64,
     height: 50,
   },
   title: {

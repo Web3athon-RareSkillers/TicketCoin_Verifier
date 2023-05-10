@@ -33,21 +33,30 @@ function SplashScreen({navigation}) {
             position: 'absolute',
           }}>
           <Col sm={12}>
-            <Row size={12} style={{}}>
+            <Row size={12} style={{marginBottom: 32}}>
               <Text>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}>
                   <Image source={require('../assets/images/logo_mini.png')} />
-                  <Text style={{color: 'white', fontFamily: 'NexaBold'}}>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontFamily: 'NexaBold',
+                      paddingLeft: 8,
+                    }}>
                     Ticket Coin
                   </Text>
                 </View>
               </Text>
             </Row>
 
-            <Row size={12} style={{marginTop: 20, marginBottom: 20}}>
+            <Row size={12} style={{marginBottom: 32}}>
               <Text
                 style={{color: 'white', fontFamily: 'NexaBold', fontSize: 32}}>
-                Book and attend concerts using{' '}
+                Secure event tickets using{''}
                 <Text
                   style={{
                     color: '#7B4ACD',
@@ -55,15 +64,17 @@ function SplashScreen({navigation}) {
                     fontSize: 32,
                   }}>
                   {' '}
-                  NFTs
+                  Blockchain
                 </Text>
               </Text>
             </Row>
-            <Row size={12}>
-              <RoundedButton
-                onPress={() => navigation.navigate('Onboard')}
-                title={'Start Experience    >>'}
-              />
+            <Row size={12} style={{marginBottom: 50}}>
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <RoundedButton
+                  onPress={() => navigation.navigate('Onboard')}
+                  title={'Start Experience    >>'}
+                />
+              </View>
             </Row>
           </Col>
         </View>
