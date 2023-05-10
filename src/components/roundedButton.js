@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 30,
     overflow: 'hidden',
-    width: SCREEN_WIDTH - 64,
+    width: SCREEN_WIDTH - 32,
   },
   gradient: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: SCREEN_WIDTH - 64,
+    width: SCREEN_WIDTH - 32,
     height: 50,
   },
   title: {
