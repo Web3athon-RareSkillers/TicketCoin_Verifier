@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  ImageBackground,
   View,
   Text,
 } from 'react-native';
@@ -29,6 +28,7 @@ function getPublicKeyFromAddress(address) {
   const publicKeyByteArray = toUint8Array(address);
   return new PublicKey(publicKeyByteArray);
 }
+
 function convertLamportsToSOL(lamports) {
   return new Intl.NumberFormat(undefined, {maximumFractionDigits: 1}).format(
     (lamports || 0) / LAMPORTS_PER_SOL,
@@ -41,6 +41,7 @@ function getAccountFromAuthorizedAccount(account) {
     publicKey: getPublicKeyFromAddress(account.address),
   };
 }
+
 function Onboarding({navigation}) {
   const {authorizeSession} = useAuthorization();
   const {connection} = useConnection();
@@ -102,7 +103,7 @@ function Onboarding({navigation}) {
         style={{flex: 1, justifyContent: 'center', backgroundColor: '#050203'}}>
         <View
           style={{
-            padding: 30,
+            padding: 16,
             flexDirection: 'row',
             flex: 1,
             position: 'absolute',
@@ -130,7 +131,7 @@ function Onboarding({navigation}) {
                   style={{
                     color: 'white',
                     fontFamily: 'NexaBold',
-                    fontSize: 18,
+                    fontSize: 24,
                     textAlign: 'center',
                   }}>
                   Connect your wallet
@@ -138,7 +139,7 @@ function Onboarding({navigation}) {
                 <Text
                   style={{
                     color: '#999999',
-                    fontFamily: 'NexaLight',
+                    fontFamily: 'Nexa ',
                     fontSize: 16,
                     marginTop: 10,
                     textAlign: 'center',

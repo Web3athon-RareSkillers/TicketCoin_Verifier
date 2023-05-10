@@ -27,7 +27,7 @@ function SplashScreen({navigation}) {
 
         <View
           style={{
-            padding: 32,
+            padding: 16,
             flexDirection: 'row',
             flex: 1,
             position: 'absolute',
@@ -47,7 +47,7 @@ function SplashScreen({navigation}) {
                       fontFamily: 'NexaBold',
                       paddingLeft: 8,
                     }}>
-                    Ticket Coin
+                    Ticketcoin
                   </Text>
                 </View>
               </Text>
