@@ -27,7 +27,7 @@ function SplashScreen({navigation}) {
 
         <View
           style={{
-            padding: 30,
+            padding: 32,
             flexDirection: 'row',
             flex: 1,
             position: 'absolute',
@@ -68,7 +68,7 @@ function SplashScreen({navigation}) {
                 </Text>
               </Text>
             </Row>
-            <Row size={12} style={{marginBottom: 50}}>
+            <Row size={12} style={{marginBottom: 48}}>
               <View style={{flex: 1, justifyContent: 'center'}}>
                 <RoundedButton
                   onPress={() => navigation.navigate('Onboard')}
