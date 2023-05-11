@@ -1,7 +1,146 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Image,
+  Text,
+  ViewStyle,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-function Footer() {
-  return <div>Footer</div>;
+const Footer = () => {
+  const [activeLink, setActiveLink] = useState('Home');
+  const navigation = useNavigation();
+
+  const handleLinkClick = link => {
+    navigation.navigate(link);
+  };
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('state', e => {
+      const activeRoute = e.data.state.routes[e.data.state.index].name;
+      setActiveLink(activeRoute);
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
+  const getIconSource = link => {
+    switch (link) {
+      case 'Home':
+        return activeLink === 'Home'
+          ? require('../assets/icons/home-clicked.png')
+          : require('../assets/icons/home.png');
+      case 'Collections':
+        return activeLink === 'Collections'
+          ? require('../assets/icons/collections-clicked.png')
+          : require('../assets/icons/collections.png');
+      case 'Account':
+        return activeLink === 'Account'
+          ? require('../assets/icons/account.png')
+          : require('../assets/icons/account.png');
+      case 'Notification':
+        return activeLink === 'Notification'
+          ? require('../assets/icons/notification.png')
+          : require('../assets/icons/notification.png');
+      default:
+        return require('../assets/icons/home.png');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.iconButton}
+        onPress={() => handleLinkClick('Home')}>
+        <Image source={getIconSource('Home')} style={styles.iconImage} />
+        <Text
+          style={[
+            styles.linkLabel,
+            activeLink === 'Home' && styles.activeLink,
+          ]}>
+          Home
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.iconButton}
+        onPress={() => handleLinkClick('Collections')}>
+        <Image source={getIconSource('Collections')} style={styles.iconImage} />
+        <Text
+          style={[
+            styles.linkLabel,
+            activeLink === 'Collections' && styles.activeLink,
+          ]}>
+          Collections
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.iconButton}
+        onPress={() => handleLinkClick('Account')}>
+        <Image source={getIconSource('Account')} style={styles.iconImage} />
+        <Text
+          style={[
+            styles.linkLabel,
+            activeLink === 'Account' && styles.activeLink,
+          ]}>
+          Account
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.iconButton}
+        onPress={() => handleLinkClick('Notification')}>
+        <Image
+          source={getIconSource('Notification')}
+          style={styles.iconImage}
+        />
+        <Text
+          style={[
+            styles.linkLabel,
+            activeLink === 'Notification' && styles.activeLink,
+          ]}>
+          Notification
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+interface Styles {
+  container: ViewStyle;
+  iconButton: ViewStyle;
+  iconImage: ViewStyle;
+  linkLabel: ViewStyle;
+  activeLink: ViewStyle;
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: '#19191A',
+    paddingVertical: 16,
+  },
+  iconButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  iconImage: {
+    width: 20,
+    height: 20,
+    marginBottom: 5,
+    resizeMode: 'contain',
+  },
+  linkLabel: {
+    fontSize: 12,
+    color: '#999999',
+    textAlign: 'center',
+  },
+  activeLink: {
+    color: '#8569F6',
+  },
+});
 export default Footer;
