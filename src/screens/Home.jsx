@@ -89,7 +89,7 @@ export default function Home() {
             </Row>
 
             <Row size={12} style={{marginBottom: 16}}>
-              <View style={styles.container}>
+              <View>
                 <SearchBar></SearchBar>
               </View>
             </Row>
@@ -190,9 +190,6 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   floatingContainer: {
     position: 'absolute',
     width: 160,
