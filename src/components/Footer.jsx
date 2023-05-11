@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Image,
   Text,
-  ViewStyle,
+  Keyboard,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -48,6 +48,32 @@ const Footer = () => {
         return require('../assets/icons/home.png');
     }
   };
+  const [keyboardVisible, setKeyboardVisible] = useState(false); // track the visibility of the keyboard
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      },
+    );
+
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+      },
+    );
+
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
+  if (keyboardVisible) {
+    return null; // hide the footer when the keyboard is visible
+  }
 
   return (
     <View style={styles.container}>
@@ -105,14 +131,6 @@ const Footer = () => {
     </View>
   );
 };
-
-interface Styles {
-  container: ViewStyle;
-  iconButton: ViewStyle;
-  iconImage: ViewStyle;
-  linkLabel: ViewStyle;
-  activeLink: ViewStyle;
-}
 
 const styles = StyleSheet.create({
   container: {
