@@ -1,23 +1,21 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import SplashScreen from './src/screens/SplashScreen';
+import Collections from './src/screens/Collections';
 import Onboarding from './src/screens/Onboarding';
 import Home from './src/screens/Home';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import { HeaderStyleInterpolator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { AuthProvider } from './AuthContext';
-import { ConnectionProvider } from '@solana/wallet-adapter-react';
-import { AuthorizationProvider } from './src/components/AuthorizationProvider';
-import { clusterApiUrl } from '@solana/web3.js';
-
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import {HeaderStyleInterpolator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {AuthProvider} from './AuthContext';
+import {ConnectionProvider} from '@solana/wallet-adapter-react';
+import {AuthorizationProvider} from './src/components/AuthorizationProvider';
+import {clusterApiUrl} from '@solana/web3.js';
+import Account from './src/screens/Account';
+import Notification from './src/screens/Notification';
 
 const Stack = createStackNavigator();
-
 
 const config = {
   animation: 'spring',
@@ -37,7 +35,7 @@ function customTransition() {
       open: config,
       close: config,
     },
-    cardStyleInterpolator: ({ current: { progress } }) => {
+    cardStyleInterpolator: ({current: {progress}}) => {
       return {
         cardStyle: {
           opacity: progress,
@@ -50,32 +48,60 @@ function customTransition() {
 function App() {
   const DEVNET_ENDPOINT = clusterApiUrl('devnet');
   return (
-    <View style={{ flex: 1, backgroundColor: '#050203' }}>
+    <View style={{flex: 1, backgroundColor: '#050203'}}>
       <NavigationContainer>
         <ConnectionProvider
-          config={{ commitment: 'processed' }}
+          config={{commitment: 'processed'}}
           endpoint={DEVNET_ENDPOINT}>
           <AuthorizationProvider>
             <AuthProvider>
-              <Stack.Navigator screenOptions={{
-                headerShown: false,
-                ...TransitionPresets.SlideFromRightIOS,
-                transitionSpec: {
-                  open: config,
-                  close: config,
-                },
-                cardStyleInterpolator: ({ current: { progress } }) => {
-                  return {
-                    cardStyle: {
-                      opacity: progress,
-                    },
-                  };
-                },
-              }}
+              <Stack.Navigator
+                screenOptions={{
+                  headerShown: false,
+                  ...TransitionPresets.SlideFromRightIOS,
+                  transitionSpec: {
+                    open: config,
+                    close: config,
+                  },
+                  cardStyleInterpolator: ({current: {progress}}) => {
+                    return {
+                      cardStyle: {
+                        opacity: progress,
+                      },
+                    };
+                  },
+                }}
                 initialRouteName="Splash">
-                <Stack.Screen name="Splash" options={{ headerShown: false }} component={SplashScreen} />
-                <Stack.Screen name="Onboard" options={{ headerShown: false }} component={Onboarding} />
-                <Stack.Screen name="Home" options={{ headerShown: false }} component={Home} />
+                <Stack.Screen
+                  name="Splash"
+                  options={{headerShown: false}}
+                  component={SplashScreen}
+                />
+                <Stack.Screen
+                  name="Onboard"
+                  options={{headerShown: false}}
+                  component={Onboarding}
+                />
+                <Stack.Screen
+                  name="Home"
+                  options={{headerShown: false}}
+                  component={Home}
+                />
+                <Stack.Screen
+                  name="Collections"
+                  options={{headerShown: false}}
+                  component={Collections}
+                />
+                <Stack.Screen
+                  name="Account"
+                  options={{headerShown: false}}
+                  component={Account}
+                />
+                <Stack.Screen
+                  name="Notification"
+                  options={{headerShown: false}}
+                  component={Notification}
+                />
               </Stack.Navigator>
             </AuthProvider>
           </AuthorizationProvider>
