@@ -3,60 +3,10 @@ import React from 'react';
 import {Image, StyleSheet, View, Text} from 'react-native';
 import {Column as Col, Row} from 'react-native-flexbox-grid';
 import SearchBar from '../components/SearchBar';
-import CarouselComponent from '../components/CarouselComponent';
 import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
 
-export default function Home() {
-  const featuredEventsSliderData = [
-    {
-      id: 1,
-      title: 'Ed Sheeran',
-      image: require('../assets/images/ed-sheeran.png'),
-    },
-    {
-      id: 2,
-      title: 'Super Bowl',
-      image: require('../assets/images/super-bowl.png'),
-    },
-    {
-      id: 3,
-      title: 'Beyonce',
-      image: require('../assets/images/beyonce.png'),
-    },
-    {
-      id: 4,
-      title: 'Gretan Van Fleet',
-      image: require('../assets/images/gretan-van-fleet.png'),
-    },
-  ];
-
-  const allEventsSliderData = [
-    {
-      id: 1,
-      subTitle: 'Ed Sheeran',
-      eventCounter: '123 Events',
-      image: require('../assets/images/ed-sheeran.png'),
-    },
-    {
-      id: 2,
-      subTitle: 'Super Bowl',
-      eventCounter: '1 Event',
-      image: require('../assets/images/super-bowl.png'),
-    },
-    {
-      id: 3,
-      subTitle: 'Beyonce',
-      eventCounter: '109 Events',
-      image: require('../assets/images/beyonce.png'),
-    },
-    {
-      id: 4,
-      subTitle: 'Gretan Van Fleet',
-      eventCounter: '87 Events',
-      image: require('../assets/images/gretan-van-fleet.png'),
-    },
-  ];
+export default function VerifyAttendee() {
   return (
     <>
       <View style={{flex: 1, backgroundColor: '#0C0C0D'}}>
@@ -89,9 +39,7 @@ export default function Home() {
             </Row>
 
             <Row size={12} style={{marginBottom: 16}}>
-              <View style={styles.container}>
-                <SearchBar></SearchBar>
-              </View>
+              <SearchBar></SearchBar>
             </Row>
             <Row size={12} style={{marginBottom: 12}}>
               <Text
@@ -100,21 +48,7 @@ export default function Home() {
                   fontFamily: 'NexaBold',
                   fontSize: 18,
                 }}>
-                Featured Event
-              </Text>
-            </Row>
-            <Row size={12} style={{marginBottom: 12}}>
-              <CarouselComponent
-                data={featuredEventsSliderData}></CarouselComponent>
-            </Row>
-            <Row size={12} style={{marginBottom: 12}}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontFamily: 'NexaBold',
-                  fontSize: 18,
-                }}>
-                Events
+                Verirfy Attendee
               </Text>
             </Row>
             <Row size={12} style={{marginBottom: 12}}>
@@ -170,9 +104,6 @@ export default function Home() {
                 </Text>
               </View>
             </Row>
-            <Row size={12} style={{marginBottom: 16}}>
-              <CarouselComponent data={allEventsSliderData}></CarouselComponent>
-            </Row>
           </Col>
         </View>
         <View style={styles.floatingContainer}>
@@ -190,9 +121,6 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   floatingContainer: {
     position: 'absolute',
     width: 160,
