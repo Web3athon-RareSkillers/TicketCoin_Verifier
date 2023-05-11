@@ -3,49 +3,6 @@ import {View, StyleSheet, Image, Text, Dimensions} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0C0C0D',
-  },
-  cardContainer: {
-    borderRadius: 10,
-    overflow: 'hidden',
-    marginHorizontal: 6,
-  },
-  cardImage: {
-    width: '100%',
-    height: 210,
-    resizeMode: 'cover',
-  },
-  cardPill: {
-    position: 'absolute',
-    bottom: 16,
-    left: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-  },
-  cardDescription: {
-    position: 'absolute',
-    bottom: 16,
-    left: 16,
-  },
-  cardTextLarge: {
-    color: 'white',
-    fontFamily: 'NexaBold',
-    fontSize: 12,
-    lineHeight: 14,
-    marginBottom: 4,
-  },
-  cardText: {
-    color: 'white',
-    fontFamily: 'NexaLight',
-    fontSize: 8,
-  },
-});
-
 const CarouselComponent = ({data}) => {
   const renderCard = ({item, index}) => {
     if (index === 0) {
@@ -117,5 +74,48 @@ const CarouselComponent = ({data}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#0C0C0D',
+  },
+  cardContainer: {
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginHorizontal: 6,
+  },
+  cardImage: {
+    width: '100%',
+    height: 210,
+    resizeMode: 'cover',
+  },
+  cardPill: {
+    position: 'absolute',
+    bottom: 16,
+    left: 16,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  cardDescription: {
+    position: 'absolute',
+    bottom: 16,
+    left: 16,
+  },
+  cardTextLarge: {
+    color: 'white',
+    fontFamily: 'NexaBold',
+    fontSize: 12,
+    lineHeight: 14,
+    marginBottom: 4,
+  },
+  cardText: {
+    color: 'white',
+    fontFamily: 'NexaLight',
+    fontSize: 8,
+  },
+});
 
 export default CarouselComponent;
