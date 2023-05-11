@@ -5,6 +5,9 @@ import SplashScreen from './src/screens/SplashScreen';
 import Collections from './src/screens/Collections';
 import Onboarding from './src/screens/Onboarding';
 import Home from './src/screens/Home';
+import Account from './src/screens/Account';
+import Notification from './src/screens/Notification';
+import VerifyAttendee from './src/screens/VerifyAttendee';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import {HeaderStyleInterpolator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -12,8 +15,6 @@ import {AuthProvider} from './AuthContext';
 import {ConnectionProvider} from '@solana/wallet-adapter-react';
 import {AuthorizationProvider} from './src/components/AuthorizationProvider';
 import {clusterApiUrl} from '@solana/web3.js';
-import Account from './src/screens/Account';
-import Notification from './src/screens/Notification';
 
 const Stack = createStackNavigator();
 
@@ -101,6 +102,11 @@ function App() {
                   name="Notification"
                   options={{headerShown: false}}
                   component={Notification}
+                />
+                <Stack.Screen
+                  name="VerifyAttendee"
+                  options={{headerShown: false}}
+                  component={VerifyAttendee}
                 />
               </Stack.Navigator>
             </AuthProvider>

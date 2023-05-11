@@ -6,7 +6,7 @@ import SearchBar from '../components/SearchBar';
 import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
 
-export default function Collections() {
+export default function Collections({navigation}) {
   return (
     <>
       <View style={{flex: 1, backgroundColor: '#0C0C0D'}}>
@@ -108,7 +108,7 @@ export default function Collections() {
         </View>
         <View style={styles.floatingContainer}>
           <RoundedButton
-            onPress={() => navigation.navigate('Verify')}
+            onPress={() => navigation.navigate('VerifyAttendee')}
             subTitle={'+   Verify Attendee'}
           />
         </View>

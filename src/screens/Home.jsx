@@ -7,7 +7,7 @@ import CarouselComponent from '../components/CarouselComponent';
 import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
 
-export default function Home() {
+export default function Home({navigation}) {
   const featuredEventsSliderData = [
     {
       id: 1,
@@ -177,7 +177,7 @@ export default function Home() {
         </View>
         <View style={styles.floatingContainer}>
           <RoundedButton
-            onPress={() => navigation.navigate('Verify')}
+            onPress={() => navigation.navigate('VerifyAttendee')}
             subTitle={'+   Verify Attendee'}
           />
         </View>
