@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 
-const Dropdown = ({options, onSelect, dropdownPlaceholder}) => {
+export default function Dropdown({options, onSelect, dropdownPlaceholder}) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
-  const handleOptionSelect = option => {
+  function handleOptionSelect(option) {
     setSelectedOption(option);
     setIsOpen(false);
     onSelect(option);
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -39,7 +39,7 @@ const Dropdown = ({options, onSelect, dropdownPlaceholder}) => {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -83,5 +83,3 @@ const styles = StyleSheet.create({
     fontFamily: 'NexaBold',
   },
 });
-
-export default Dropdown;

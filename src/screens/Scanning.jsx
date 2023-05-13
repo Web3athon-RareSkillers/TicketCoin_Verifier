@@ -1,9 +1,9 @@
 import React from 'react';
 
 import {Image, StyleSheet, View, Text} from 'react-native';
-import RoundedButton from '../components/roundedButton';
 import VerifyAttendeeHeader from '../components/VerifyAttendeeHeader';
 import Footer from '../components/Footer';
+import Scanner from '../components/Scanner';
 
 export default function Scanning({navigation}) {
   return (
@@ -35,6 +35,10 @@ export default function Scanning({navigation}) {
             />
             <Text style={[styles.iconText, styles.textInactive]}>Success</Text>
           </View>
+        </View>
+
+        <View style={{flex: 1}}>
+          <Scanner></Scanner>
         </View>
 
         <View style={styles.footerContainer}>
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,
-    marginBottom: 80,
+    marginBottom: 96,
   },
   iconContainer: {
     flexDirection: 'row',

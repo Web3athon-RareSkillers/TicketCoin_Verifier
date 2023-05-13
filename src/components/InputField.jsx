@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {TextInput, StyleSheet, View} from 'react-native';
 
-const InputField = ({onInputChange, placeholderText}) => {
+export default function InputField({onInputChange, placeholderText}) {
   const [text, setText] = useState('');
 
-  const handleTextChange = value => {
+  function handleTextChange(value) {
     setText(value);
     onInputChange(value);
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -20,7 +20,7 @@ const InputField = ({onInputChange, placeholderText}) => {
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -36,5 +36,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default InputField;
