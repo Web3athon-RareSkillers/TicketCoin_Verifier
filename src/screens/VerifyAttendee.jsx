@@ -71,8 +71,9 @@ export default function VerifyAttendee({navigation}) {
           }}>
           <Text style={styles.inputTitle}>Event Category</Text>
           <Dropdown
-            options={['Option 1', 'Option 2', 'Option 3']}
+            options={['All', 'Sport', 'Music', 'Art', 'Food']}
             onSelect={handleDropdownSelect}
+            dropdownPlaceholder="All"
           />
         </View>
         <View
