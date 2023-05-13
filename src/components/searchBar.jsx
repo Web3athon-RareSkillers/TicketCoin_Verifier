@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  Keyboard,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
@@ -55,22 +54,22 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     height: 40,
-    flexDirection: 'row', //
+    flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 8,
     borderColor: '#1F1F1F',
     borderWidth: 1,
   },
   icon: {
-    marginHorizontal: 12, // Adds some spacing to the left and right of the icon
+    marginHorizontal: 12,
     width: 16,
     height: 16,
   },
   input: {
-    height: '100%',
-    paddingRight: 12,
+    paddingLeft: 8, // Add some left padding
     fontFamily: 'NexaLight',
-    color: '#999999', // Text color
+    color: '#999999',
+    width: '80%',
   },
 });
 export default SearchBar;
