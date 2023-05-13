@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 
-const Dropdown = ({options, onSelect}) => {
+const Dropdown = ({options, onSelect, dropdownPlaceholder}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -17,7 +17,7 @@ const Dropdown = ({options, onSelect}) => {
         style={styles.dropdownButton}
         onPress={() => setIsOpen(!isOpen)}>
         <Text style={styles.dropdownButtonText}>
-          {selectedOption || 'Select an option'}
+          {selectedOption || dropdownPlaceholder}
         </Text>
         <Image
           style={styles.arrowDownIcon}
