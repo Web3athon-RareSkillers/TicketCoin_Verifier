@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 
 import {Dimensions} from 'react-native';
 import {
@@ -12,11 +12,17 @@ import {
 } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-function SearchBar() {
+function SearchBar({onInputChange}) {
   const inputRef = useRef(); // Create a reference
 
   const handlePress = () => {
     inputRef.current.focus(); // Focus the input when the view is pressed
+  };
+  const [text, setText] = useState('');
+
+  const handleTextChange = value => {
+    setText(value);
+    onInputChange(value);
   };
   return (
     <KeyboardAvoidingView
@@ -37,6 +43,7 @@ function SearchBar() {
             style={styles.input}
             placeholder="Search"
             placeholderTextColor="#999999"
+            onChangeText={handleTextChange}
           />
         </View>
       </TouchableOpacity>

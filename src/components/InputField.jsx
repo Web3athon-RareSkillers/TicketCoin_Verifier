@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     padding: 8,
     color: 'white',
-    zIndex: 1,
   },
 });
 

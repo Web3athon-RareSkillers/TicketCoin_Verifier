@@ -8,6 +8,9 @@ import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
 
 export default function Home({navigation}) {
+  const handleSearchInputChange = text => {
+    console.log('Input value:', text);
+  };
   const featuredEventsSliderData = [
     {
       id: 1,
@@ -90,7 +93,7 @@ export default function Home({navigation}) {
 
             <Row size={12} style={{marginBottom: 16}}>
               <View>
-                <SearchBar></SearchBar>
+                <SearchBar onInputChange={handleSearchInputChange}></SearchBar>
               </View>
             </Row>
             <Row size={12} style={{marginBottom: 12}}>
