@@ -36,8 +36,8 @@ const Footer = () => {
         return activeLink === 'Collections'
           ? require('../assets/icons/collections-clicked.png')
           : require('../assets/icons/collections.png');
-      case 'Account':
-        return activeLink === 'Account'
+      case 'VerifyAttendee':
+        return activeLink === 'VerifyAttendee'
           ? require('../assets/icons/account.png')
           : require('../assets/icons/account.png');
       case 'Notification':
@@ -103,14 +103,17 @@ const Footer = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.iconButton}
-        onPress={() => handleLinkClick('Account')}>
-        <Image source={getIconSource('Account')} style={styles.iconImage} />
+        onPress={() => handleLinkClick('VerifyAttendee')}>
+        <Image
+          source={getIconSource('VerifyAttendee')}
+          style={styles.iconImage}
+        />
         <Text
           style={[
             styles.linkLabel,
-            activeLink === 'Account' && styles.activeLink,
+            activeLink === 'VerifyAttendee' && styles.activeLink,
           ]}>
-          Account
+          Verify
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
