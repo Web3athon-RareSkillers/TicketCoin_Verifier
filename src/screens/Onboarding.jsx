@@ -101,6 +101,7 @@ function Onboarding({navigation}) {
     });
   });
 
+  // Animation for pulsing wallet image
   const pulseAnimation = useRef(new Animated.Value(1)).current;
   const verticalAnimation = useRef(new Animated.Value(0)).current;
 
@@ -144,19 +145,8 @@ function Onboarding({navigation}) {
         <StatusBar translucent={true} backgroundColor={'transparent'} />
       </SafeAreaView>
 
-      <View
-        style={{
-          padding: 16,
-          flexDirection: 'column',
-          flex: 1,
-          alignItems: 'center',
-          backgroundColor: '#0C0C0D',
-        }}>
-        <View
-          style={{
-            marginTop: 140,
-            marginBottom: 64,
-          }}>
+      <View style={styles.container}>
+        <View style={styles.walletContainer}>
           <Animated.Image
             source={require('../assets/images/wallet.png')}
             style={[
@@ -170,53 +160,66 @@ function Onboarding({navigation}) {
           />
         </View>
 
-        <View
-          style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginBottom: 56,
-          }}>
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: 'NexaBold',
-              fontSize: 24,
-              textAlign: 'center',
-            }}>
-            Connect your wallet
-          </Text>
-          <Text
-            style={{
-              color: '#999999',
-              fontFamily: 'NexaLight',
-              fontSize: 16,
-              marginTop: 10,
-              textAlign: 'center',
-            }}>
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>Connect your wallet</Text>
+          <Text style={styles.subtitle}>
             Attach your wallet to get full access of event tickets from booking,
             buying and verifying
           </Text>
         </View>
-        <View
-          style={{
-            flex: 1,
-            width: SCREEN_WIDTH - 32,
-            marginBottom: 64,
-            gap: 16,
-            maxHeight: 120,
-          }}>
+
+        <View style={styles.buttonContainer}>
           <RoundedButton
             onPress={() => handleConnectPress()}
             title={'Connect wallet'}
           />
           <TransparentButton
-            title={'Skip for now'}
             onPress={() => skipConnection()}
+            title={'Skip for now'}
           />
         </View>
       </View>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    flexDirection: 'column',
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#0C0C0D',
+  },
+  walletContainer: {
+    marginTop: 140,
+    marginBottom: 64,
+  },
+  contentContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginBottom: 56,
+  },
+  title: {
+    color: 'white',
+    fontFamily: 'NexaBold',
+    fontSize: 24,
+    textAlign: 'center',
+  },
+  subtitle: {
+    color: '#999999',
+    fontFamily: 'NexaLight',
+    fontSize: 16,
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    flex: 1,
+    width: SCREEN_WIDTH - 32,
+    marginBottom: 64,
+    gap: 16,
+    maxHeight: 120,
+  },
+});
 
 export default Onboarding;
