@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    height: 50,
+    height: 52,
   },
   title: {
     color: 'white',

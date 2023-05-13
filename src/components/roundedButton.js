@@ -30,19 +30,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    height: 50,
+    height: 52,
   },
   title: {
     color: 'white',
     fontSize: 16,
-    fontFamily: 'NexaLight',
+    fontFamily: 'NexaBold',
     textAlign: 'center',
   },
   subTitle: {
     color: 'white',
     fontSize: 12,
     lineHeight: 16,
-    fontFamily: 'NexaLight',
+    fontFamily: 'NexaBold',
     textAlign: 'center',
   },
 });
