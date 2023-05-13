@@ -1,45 +1,99 @@
 import React from 'react';
 
-import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
+import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
+import Dropdown from '../components/Dropdown';
+import InputField from '../components/InputField';
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function VerifyAttendee({navigation}) {
+  const handleDropdownSelect = option => {
+    console.log('Selected option:', option);
+  };
+
+  const handleInputChange = text => {
+    console.log('Input value:', text);
+  };
   return (
     <>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image
               style={styles.backIcon}
               source={require('../assets/icons/back-arrow.png')}
             />
           </TouchableOpacity>
-          <Text style={styles.title}>Verify Attendee</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Verify Attendee</Text>
+          </View>
           <View style={styles.emptyView} />
         </View>
 
         <View style={styles.progressbarWrapper}>
           <View style={styles.iconContainer}>
             <Image
-              style={styles.image}
-              source={require('../assets/icons/checked.svg')}
+              style={[styles.checkIcon, styles.brightIcon]}
+              source={require('../assets/icons/unchecked.png')}
             />
-            <Text style={styles.title}>Event</Text>
+            <Text style={[styles.iconText, styles.textActive]}>Event</Text>
           </View>
           <View style={styles.iconContainer}>
             <Image
-              style={styles.image}
-              source={require('../assets/icons/unchecked.svg')}
+              style={styles.checkIcon}
+              source={require('../assets/icons/unchecked.png')}
             />
-            <Text style={styles.title}>Scan</Text>
+            <Text style={[styles.iconText, styles.textInactive]}>Scan</Text>
           </View>
           <View style={styles.iconContainer}>
             <Image
-              style={styles.image}
-              source={require('../assets/icons/unchecked.svg')}
+              style={styles.checkIcon}
+              source={require('../assets/icons/unchecked.png')}
             />
-            <Text style={styles.title}>Success</Text>
+            <Text style={[styles.iconText, styles.textInactive]}>Success</Text>
           </View>
+        </View>
+        <View
+          style={{
+            paddingHorizontal: 16,
+            flex: 1,
+            marginBottom: 16,
+            maxHeight: 104,
+            zIndex: 2,
+          }}>
+          <Text style={styles.inputTitle}>Event Category</Text>
+          <Dropdown
+            options={['Option 1', 'Option 2', 'Option 3']}
+            onSelect={handleDropdownSelect}
+          />
+        </View>
+        <View
+          style={{
+            paddingHorizontal: 16,
+            flex: 1,
+            marginBottom: 16,
+            maxHeight: 104,
+            zIndex: 1,
+          }}>
+          <Text style={styles.inputTitle}>Event Name</Text>
+          <InputField
+            onInputChange={handleInputChange}
+            placeholderText={'Type event name here'}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <RoundedButton
+            onPress={() => navigation.navigate()}
+            title={'Proceed to scan    >> '}
+          />
         </View>
 
         <View style={styles.footerContainer}>
@@ -56,10 +110,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#0C0C0D',
   },
   headerContainer: {
-    paddingHorizontal: 32,
+    paddingHorizontal: 16,
     paddingVertical: 64,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  titleContainer: {
+    flex: 1,
+    justifyContent: 'center',
   },
   backIcon: {
     height: 20,
@@ -73,23 +131,54 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,
+    marginBottom: 80,
   },
   iconContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  image: {
-    height: 20,
-    width: 20,
+  checkIcon: {
     marginRight: 12,
+    opacity: 0.5,
+  },
+  brightIcon: {
+    opacity: 1,
   },
   title: {
-    flex: 1,
     color: 'white',
-    fontSize: 20,
-    fontWeight: 600,
+    fontSize: 16,
     fontFamily: 'NexaBold',
     textAlign: 'center',
+  },
+  inputTitle: {
+    color: 'white',
+    fontSize: 14,
+    fontFamily: 'NexaBold',
+    textAlign: 'left',
+    paddingBottom: 4,
+  },
+  iconText: {
+    fontSize: 12,
+    fontFamily: 'NexaBold',
+    textAlign: 'center',
+  },
+  textInactive: {
+    color: '#999999',
+  },
+  textActive: {
+    color: 'white',
+  },
+  buttonsWrap: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    maxHeight: 220,
+  },
+  buttonContainer: {
+    flex: 1,
+    width: SCREEN_WIDTH,
+    paddingHorizontal: 16,
+    maxHeight: 52,
   },
   footerContainer: {
     height: 80,
