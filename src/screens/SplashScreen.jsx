@@ -8,9 +8,11 @@ import {
   ImageBackground,
   View,
   Text,
+  Dimensions,
 } from 'react-native';
 import {Column as Col, Row} from 'react-native-flexbox-grid';
 import RoundedButton from '../components/roundedButton';
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 function SplashScreen({navigation}) {
   return (
@@ -28,55 +30,55 @@ function SplashScreen({navigation}) {
         <View
           style={{
             padding: 16,
-            flexDirection: 'row',
+            flexDirection: 'column',
             flex: 1,
             position: 'absolute',
           }}>
-          <Col sm={12}>
-            <Row size={12} style={{marginBottom: 32}}>
-              <Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}>
-                  <Image source={require('../assets/images/logo_mini.png')} />
-                  <Text
-                    style={{
-                      color: 'white',
-                      fontFamily: 'NexaBold',
-                      paddingLeft: 8,
-                    }}>
-                    Ticketcoin
-                  </Text>
-                </View>
-              </Text>
-            </Row>
-
-            <Row size={12} style={{marginBottom: 32}}>
+          <View style={{marginBottom: 32}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Image source={require('../assets/images/logo_mini.png')} />
               <Text
-                style={{color: 'white', fontFamily: 'NexaBold', fontSize: 32}}>
-                Secure event tickets using{''}
-                <Text
-                  style={{
-                    color: '#7B4ACD',
-                    fontFamily: 'NexaBold',
-                    fontSize: 32,
-                  }}>
-                  {' '}
-                  Blockchain
-                </Text>
+                style={{
+                  color: 'white',
+                  fontFamily: 'NexaBold',
+                  paddingLeft: 8,
+                }}>
+                Ticketcoin
               </Text>
-            </Row>
-            <Row size={12} style={{marginBottom: 48}}>
-              <View style={{flex: 1, justifyContent: 'center'}}>
-                <RoundedButton
-                  onPress={() => navigation.navigate('Onboard')}
-                  title={'Start Experience    >>'}
-                />
-              </View>
-            </Row>
-          </Col>
+            </View>
+          </View>
+
+          <View style={{marginBottom: 32}}>
+            <Text
+              style={{color: 'white', fontFamily: 'NexaBold', fontSize: 32}}>
+              Secure event tickets using{''}
+              <Text
+                style={{
+                  color: '#7B4ACD',
+                  fontFamily: 'NexaBold',
+                  fontSize: 32,
+                }}>
+                {' '}
+                Blockchain
+              </Text>
+            </Text>
+          </View>
+          <View
+            style={{
+              marginBottom: 48,
+              flex: 1,
+              justifyContent: 'center',
+              width: SCREEN_WIDTH - 32,
+            }}>
+            <RoundedButton
+              onPress={() => navigation.navigate('Onboard')}
+              title={'Start Experience    >>'}
+            />
+          </View>
         </View>
       </View>
     </>
