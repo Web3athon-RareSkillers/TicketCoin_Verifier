@@ -15,6 +15,7 @@ import {AuthProvider} from './AuthContext';
 import {ConnectionProvider} from '@solana/wallet-adapter-react';
 import {AuthorizationProvider} from './src/components/AuthorizationProvider';
 import {clusterApiUrl} from '@solana/web3.js';
+import Scanning from './src/screens/Scanning';
 
 const Stack = createStackNavigator();
 
@@ -107,6 +108,11 @@ function App() {
                   name="VerifyAttendee"
                   options={{headerShown: false}}
                   component={VerifyAttendee}
+                />
+                <Stack.Screen
+                  name="Scanning"
+                  options={{headerShown: false}}
+                  component={Scanning}
                 />
               </Stack.Navigator>
             </AuthProvider>
