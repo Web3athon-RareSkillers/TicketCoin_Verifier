@@ -1,17 +1,10 @@
 import React from 'react';
-
-import {
-  Image,
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import {Image, StyleSheet, View, Text, Dimensions} from 'react-native';
 import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
 import Dropdown from '../components/Dropdown';
 import InputField from '../components/InputField';
+import VerifyAttendeeHeader from '../components/VerifyAttendeeHeader';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function VerifyAttendee({navigation}) {
@@ -25,17 +18,8 @@ export default function VerifyAttendee({navigation}) {
   return (
     <>
       <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image
-              style={styles.backIcon}
-              source={require('../assets/icons/back-arrow.png')}
-            />
-          </TouchableOpacity>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Verify Attendee</Text>
-          </View>
-          <View style={styles.emptyView} />
+        <View>
+          <VerifyAttendeeHeader navigation={navigation} />
         </View>
 
         <View style={styles.progressbarWrapper}>
@@ -92,7 +76,7 @@ export default function VerifyAttendee({navigation}) {
         </View>
         <View style={styles.buttonContainer}>
           <RoundedButton
-            onPress={() => navigation.navigate()}
+            onPress={() => navigation.navigate('Scanning')}
             title={'Proceed to scan    >> '}
           />
         </View>
