@@ -1,14 +1,20 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
 
 import {
-  Image,
   SafeAreaView,
   StatusBar,
   StyleSheet,
   View,
   Text,
+  Animated,
+  Dimensions,
 } from 'react-native';
-import {Column as Col, Row} from 'react-native-flexbox-grid';
 import RoundedButton from '../components/roundedButton';
 import TransparentButton from '../components/transparentButton';
 import {useAuthorization} from '../components/AuthorizationProvider';
@@ -17,6 +23,7 @@ import {toUint8Array} from 'js-base64';
 import {PublicKey} from '@solana/web3.js';
 import {AuthContext} from '../../AuthContext';
 import {useConnection} from '@solana/wallet-adapter-react';
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export const APP_IDENTITY = {
   name: 'TicketCoin',
@@ -93,6 +100,44 @@ function Onboarding({navigation}) {
       navigation.navigate('Home');
     });
   });
+
+  const pulseAnimation = useRef(new Animated.Value(1)).current;
+  const verticalAnimation = useRef(new Animated.Value(0)).current;
+
+  const startAnimations = () => {
+    Animated.loop(
+      Animated.parallel([
+        Animated.sequence([
+          Animated.timing(pulseAnimation, {
+            toValue: 1.1,
+            duration: 3000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(pulseAnimation, {
+            toValue: 1,
+            duration: 3000,
+            useNativeDriver: true,
+          }),
+        ]),
+        Animated.sequence([
+          Animated.timing(verticalAnimation, {
+            toValue: -10,
+            duration: 3000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(verticalAnimation, {
+            toValue: 0,
+            duration: 3000,
+            useNativeDriver: true,
+          }),
+        ]),
+      ]),
+    ).start();
+  };
+
+  useEffect(() => {
+    startAnimations();
+  }, []);
   return (
     <>
       <SafeAreaView>
@@ -100,79 +145,78 @@ function Onboarding({navigation}) {
       </SafeAreaView>
 
       <View
-        style={{flex: 1, justifyContent: 'center', backgroundColor: '#050203'}}>
+        style={{
+          padding: 16,
+          flexDirection: 'column',
+          flex: 1,
+          alignItems: 'center',
+          backgroundColor: '#0C0C0D',
+        }}>
         <View
           style={{
-            padding: 16,
-            flexDirection: 'row',
-            flex: 1,
-            position: 'absolute',
+            marginTop: 140,
+            marginBottom: 64,
           }}>
-          <Col sm={12}>
-            <Row size={12} style={{}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginTop: 100,
-                  alignItems: 'center',
-                }}>
-                <Image source={require('../assets/images/wallet.png')} />
-              </View>
-            </Row>
+          <Animated.Image
+            source={require('../assets/images/wallet.png')}
+            style={[
+              {
+                transform: [
+                  {scale: pulseAnimation},
+                  {translateY: verticalAnimation},
+                ],
+              },
+            ]}
+          />
+        </View>
 
-            <Row size={12} style={{marginTop: 20, marginBottom: 20}}>
-              <View
-                style={{
-                  flexDirection: 'column',
-                  marginTop: 80,
-                  alignItems: 'center',
-                }}>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'NexaBold',
-                    fontSize: 24,
-                    textAlign: 'center',
-                  }}>
-                  Connect your wallet
-                </Text>
-                <Text
-                  style={{
-                    color: '#999999',
-                    fontFamily: 'Nexa ',
-                    fontSize: 16,
-                    marginTop: 10,
-                    textAlign: 'center',
-                  }}>
-                  Attach your wallet to get full access of event tickets from
-                  booking, buying and verifying
-                </Text>
-              </View>
-            </Row>
-            <Row size={12} style={{marginTop: 35}}>
-              <RoundedButton
-                onPress={() => handleConnectPress()}
-                title={'Connect wallet'}
-              />
-            </Row>
-            <Row size={12} style={{marginTop: 20}}>
-              <TransparentButton
-                title={'Skip for now'}
-                onPress={() => skipConnection()}
-              />
-            </Row>
-          </Col>
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: 56,
+          }}>
+          <Text
+            style={{
+              color: 'white',
+              fontFamily: 'NexaBold',
+              fontSize: 24,
+              textAlign: 'center',
+            }}>
+            Connect your wallet
+          </Text>
+          <Text
+            style={{
+              color: '#999999',
+              fontFamily: 'NexaLight',
+              fontSize: 16,
+              marginTop: 10,
+              textAlign: 'center',
+            }}>
+            Attach your wallet to get full access of event tickets from booking,
+            buying and verifying
+          </Text>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            width: SCREEN_WIDTH - 32,
+            marginBottom: 64,
+            gap: 16,
+            maxHeight: 120,
+          }}>
+          <RoundedButton
+            onPress={() => handleConnectPress()}
+            title={'Connect wallet'}
+          />
+          <TransparentButton
+            title={'Skip for now'}
+            onPress={() => skipConnection()}
+          />
         </View>
       </View>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
-});
 
 export default Onboarding;
