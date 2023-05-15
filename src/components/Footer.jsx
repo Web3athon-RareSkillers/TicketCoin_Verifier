@@ -38,11 +38,11 @@ const Footer = () => {
           : require('../assets/icons/collections.png');
       case 'VerifyAttendee':
         return activeLink === 'VerifyAttendee'
-          ? require('../assets/icons/account.png')
+          ? require('../assets/icons/account-clicked.png')
           : require('../assets/icons/account.png');
       case 'Notification':
         return activeLink === 'Notification'
-          ? require('../assets/icons/notification.png')
+          ? require('../assets/icons/notification-clicked.png')
           : require('../assets/icons/notification.png');
       default:
         return require('../assets/icons/home.png');
