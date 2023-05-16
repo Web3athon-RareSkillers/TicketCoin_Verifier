@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  ImageBackground,
   View,
   Text,
   Dimensions,
@@ -31,7 +30,10 @@ function SplashScreen({navigation}) {
 
         <View style={styles.absoluteContainer}>
           <View style={styles.logoContainer}>
-            <Image source={require('../assets/images/logo_mini.png')} />
+            <Image
+              style={styles.logo}
+              source={require('../assets/images/logo_mini.png')}
+            />
             <Text style={styles.logoText}>Ticketcoin</Text>
           </View>
 
@@ -76,6 +78,10 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'absolute',
   },
+  logo: {
+    height: 32,
+    width: 32,
+  },
   logoContainer: {
     marginBottom: 32,
     flexDirection: 'row',
@@ -85,6 +91,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'NexaBold',
     paddingLeft: 8,
+    fontSize: 18,
   },
   titleContainer: {
     marginBottom: 32,

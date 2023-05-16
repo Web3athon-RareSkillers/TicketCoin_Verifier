@@ -78,7 +78,10 @@ export default function Home({navigation}) {
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}>
-                  <Image source={require('../assets/images/logo_mini.png')} />
+                  <Image
+                    style={{height: 20, width: 20}}
+                    source={require('../assets/images/logo_mini.png')}
+                  />
                   <Text
                     style={{
                       color: 'white',
@@ -193,6 +196,10 @@ export default function Home({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    height: 16,
+    width: 16,
+  },
   floatingContainer: {
     position: 'absolute',
     width: 160,
