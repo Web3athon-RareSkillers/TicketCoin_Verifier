@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import SplashScreen from './src/screens/SplashScreen';
+import Intro from './src/screens/Intro';
 import Collections from './src/screens/Collections';
 import Onboarding from './src/screens/Onboarding';
 import Home from './src/screens/Home';
@@ -16,6 +16,7 @@ import {ConnectionProvider} from '@solana/wallet-adapter-react';
 import {AuthorizationProvider} from './src/components/AuthorizationProvider';
 import {clusterApiUrl} from '@solana/web3.js';
 import Scanning from './src/screens/Scanning';
+import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createStackNavigator();
 
@@ -47,7 +48,11 @@ function customTransition() {
     headerStyleInterpolator: HeaderStyleInterpolator.forFade,
   };
 }
+
 function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   const DEVNET_ENDPOINT = clusterApiUrl('devnet');
   return (
     <View style={{flex: 1, backgroundColor: '#050203'}}>
@@ -77,7 +82,7 @@ function App() {
                 <Stack.Screen
                   name="Splash"
                   options={{headerShown: false}}
-                  component={SplashScreen}
+                  component={Intro}
                 />
                 <Stack.Screen
                   name="Onboard"

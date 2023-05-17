@@ -12,7 +12,7 @@ import RoundedButton from '../components/roundedButton';
 import Video from 'react-native-video';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-function SplashScreen({navigation}) {
+function Intro({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar translucent={true} backgroundColor={'transparent'} />
@@ -114,4 +114,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SplashScreen;
+export default Intro;
