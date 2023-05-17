@@ -6,16 +6,18 @@ import Footer from '../components/Footer';
 import Scanner from '../components/Scanner';
 import checkedIcon from '../assets/icons/checked.png';
 import uncheckedIcon from '../assets/icons/unchecked.png';
+import globalStyles from '../globalStyles';
 
 export default function Scanning({navigation}) {
   const [scanState, setScanState] = useState(false);
+
   const handleScan = data => {
     setScanState(data);
-    console.log('Received event from child with data:', scanState);
   };
+
   return (
     <>
-      <View style={styles.container}>
+      <View style={globalStyles.mainContainer}>
         <View>
           <VerifyAttendeeHeader navigation={navigation} />
         </View>
@@ -60,7 +62,7 @@ export default function Scanning({navigation}) {
           <Scanner emitScanState={handleScan}></Scanner>
         </View>
 
-        <View style={styles.footerContainer}>
+        <View style={globalStyles.footerContainer}>
           <Footer></Footer>
         </View>
       </View>
@@ -69,10 +71,6 @@ export default function Scanning({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0C0C0D',
-  },
   headerContainer: {
     paddingHorizontal: 16,
     paddingVertical: 64,
@@ -137,13 +135,5 @@ const styles = StyleSheet.create({
   },
   textDone: {
     color: '#A55AD8',
-  },
-  footerContainer: {
-    height: 80,
-    position: 'absolute',
-    bottom: 0,
-    flex: 1,
-    right: 0,
-    left: 0,
   },
 });

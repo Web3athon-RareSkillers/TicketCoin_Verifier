@@ -1,11 +1,11 @@
 import React from 'react';
-import {Image, StyleSheet, View, Text, Dimensions} from 'react-native';
+import {Image, StyleSheet, View, Text} from 'react-native';
 import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
 import Dropdown from '../components/Dropdown';
 import InputField from '../components/InputField';
 import VerifyAttendeeHeader from '../components/VerifyAttendeeHeader';
-const SCREEN_WIDTH = Dimensions.get('window').width;
+import globalStyles from '../globalStyles';
 
 export default function VerifyAttendee({navigation}) {
   const handleDropdownSelect = option => {
@@ -17,7 +17,7 @@ export default function VerifyAttendee({navigation}) {
   };
   return (
     <>
-      <View style={styles.container}>
+      <View style={globalStyles.mainContainer}>
         <View>
           <VerifyAttendeeHeader navigation={navigation} />
         </View>
@@ -45,14 +45,7 @@ export default function VerifyAttendee({navigation}) {
             <Text style={[styles.iconText, styles.textInactive]}>Success</Text>
           </View>
         </View>
-        <View
-          style={{
-            paddingHorizontal: 16,
-            flex: 1,
-            marginBottom: 16,
-            maxHeight: 104,
-            zIndex: 2,
-          }}>
+        <View style={styles.titleDropdownContainer}>
           <Text style={styles.inputTitle}>Event Category</Text>
           <Dropdown
             options={['All', 'Sport', 'Music', 'Art', 'Food']}
@@ -60,28 +53,21 @@ export default function VerifyAttendee({navigation}) {
             dropdownPlaceholder="All"
           />
         </View>
-        <View
-          style={{
-            paddingHorizontal: 16,
-            flex: 1,
-            marginBottom: 16,
-            maxHeight: 104,
-            zIndex: 1,
-          }}>
+        <View style={styles.titleInputContainer}>
           <Text style={styles.inputTitle}>Event Name</Text>
           <InputField
             onInputChange={handleInputChange}
             placeholderText={'Type event name here'}
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={globalStyles.floatingContainer}>
           <RoundedButton
             onPress={() => navigation.navigate('Scanning')}
             title={'Proceed to scan    >> '}
           />
         </View>
 
-        <View style={styles.footerContainer}>
+        <View style={globalStyles.footerContainer}>
           <Footer></Footer>
         </View>
       </View>
@@ -90,15 +76,25 @@ export default function VerifyAttendee({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0C0C0D',
-  },
   headerContainer: {
     paddingHorizontal: 16,
     paddingVertical: 64,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  titleInputContainer: {
+    paddingHorizontal: 16,
+    flex: 1,
+    marginBottom: 16,
+    maxHeight: 104,
+    zIndex: 1,
+  },
+  titleDropdownContainer: {
+    paddingHorizontal: 16,
+    flex: 1,
+    marginBottom: 16,
+    maxHeight: 104,
+    zIndex: 2,
   },
   titleContainer: {
     flex: 1,
@@ -158,19 +154,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     maxHeight: 220,
-  },
-  buttonContainer: {
-    flex: 1,
-    width: SCREEN_WIDTH,
-    paddingHorizontal: 16,
-    maxHeight: 52,
-  },
-  footerContainer: {
-    height: 80,
-    position: 'absolute',
-    bottom: 0,
-    flex: 1,
-    right: 0,
-    left: 0,
   },
 });

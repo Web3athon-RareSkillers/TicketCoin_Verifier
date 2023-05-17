@@ -6,12 +6,13 @@ import SearchBar from '../components/SearchBar';
 import CarouselComponent from '../components/CarouselComponent';
 import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
+import globalStyles from '../globalStyles';
 
 export default function Home({navigation}) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const handleSearchInputChange = text => {
-    console.log('Input value:', text);
+    console.log('Search input value:', text);
   };
 
   // MOCK DATA FOR FEATURED EVENTS
@@ -67,43 +68,43 @@ export default function Home({navigation}) {
   ];
   return (
     <>
-      <View style={styles.mainContainer}>
-        <View style={styles.innerContainer}>
+      <View style={globalStyles.mainContainer}>
+        <View style={globalStyles.innerContainer}>
           <Col sm={12}>
-            <Row size={12} style={styles.headerWrap}>
+            <Row size={12} style={globalStyles.headerWrap}>
               <Text>
-                <View style={styles.headerContainer}>
+                <View style={globalStyles.headerContainer}>
                   <Image
-                    style={styles.logo}
+                    style={globalStyles.logo}
                     source={require('../assets/images/logo_mini.png')}
                   />
-                  <Text style={styles.ticketcoinText}>Ticketcoin</Text>
+                  <Text style={globalStyles.ticketcoinText}>Ticketcoin</Text>
                 </View>
               </Text>
             </Row>
-            <Row size={12} style={styles.searchBarRow}>
+            <Row size={12} style={globalStyles.searchBarRow}>
               <View>
                 <SearchBar onInputChange={handleSearchInputChange}></SearchBar>
               </View>
             </Row>
             <Row size={12} style={styles.titleRow}>
-              <Text style={styles.featuredEventText}>Featured Event</Text>
+              <Text style={globalStyles.textMediumBold}>Featured Event</Text>
             </Row>
             <Row size={12} style={styles.carouselRow}>
               <CarouselComponent
                 data={featuredEventsSliderData}></CarouselComponent>
             </Row>
-            <Row size={12} style={styles.secondTitleRow}>
-              <Text style={styles.eventsText}>Events</Text>
+            <Row size={12} style={styles.titleRow}>
+              <Text style={globalStyles.textMediumBold}>Events</Text>
             </Row>
-            <Row size={12} style={styles.categoryRow}>
-              <View style={styles.categoryContainer}>
+            <Row size={12} style={globalStyles.categoryRow}>
+              <View style={globalStyles.categoryContainer}>
                 <TouchableOpacity onPress={() => setSelectedCategory('All')}>
                   <Text
                     style={
                       selectedCategory === 'All'
-                        ? styles.selectedCategoryText
-                        : styles.unselectedCategoryText
+                        ? globalStyles.selectedCategoryText
+                        : globalStyles.unselectedCategoryText
                     }>
                     All
                   </Text>
@@ -112,8 +113,8 @@ export default function Home({navigation}) {
                   <Text
                     style={
                       selectedCategory === 'Sport'
-                        ? styles.selectedCategoryText
-                        : styles.unselectedCategoryText
+                        ? globalStyles.selectedCategoryText
+                        : globalStyles.unselectedCategoryText
                     }>
                     Sport
                   </Text>
@@ -122,8 +123,8 @@ export default function Home({navigation}) {
                   <Text
                     style={
                       selectedCategory === 'Music'
-                        ? styles.selectedCategoryText
-                        : styles.unselectedCategoryText
+                        ? globalStyles.selectedCategoryText
+                        : globalStyles.unselectedCategoryText
                     }>
                     Music
                   </Text>
@@ -132,8 +133,8 @@ export default function Home({navigation}) {
                   <Text
                     style={
                       selectedCategory === 'Art'
-                        ? styles.selectedCategoryText
-                        : styles.unselectedCategoryText
+                        ? globalStyles.selectedCategoryText
+                        : globalStyles.unselectedCategoryText
                     }>
                     Art
                   </Text>
@@ -142,8 +143,8 @@ export default function Home({navigation}) {
                   <Text
                     style={
                       selectedCategory === 'Food'
-                        ? styles.selectedCategoryText
-                        : styles.unselectedCategoryText
+                        ? globalStyles.selectedCategoryText
+                        : globalStyles.unselectedCategoryText
                     }>
                     Food
                   </Text>
@@ -155,14 +156,14 @@ export default function Home({navigation}) {
             </Row>
           </Col>
         </View>
-        <View style={styles.floatingContainer}>
+        <View style={globalStyles.floatingContainer}>
           <RoundedButton
             onPress={() => navigation.navigate('VerifyAttendee')}
             subTitle={'+   Verify Attendee'}
           />
         </View>
       </View>
-      <View style={styles.footerContainer}>
+      <View style={globalStyles.footerContainer}>
         <Footer></Footer>
       </View>
     </>
@@ -170,87 +171,10 @@ export default function Home({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: '#0C0C0D',
-  },
-  innerContainer: {
-    padding: 16,
-    flexDirection: 'row',
-    flex: 1,
-    position: 'absolute',
-  },
-  logo: {
-    height: 20,
-    width: 20,
-  },
-  headerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  ticketcoinText: {
-    color: 'white',
-    fontFamily: 'NexaBold',
-    paddingLeft: 8,
-  },
-  headerWrap: {
-    marginBottom: 32,
-    marginTop: 48,
-  },
-  searchBarRow: {
-    marginBottom: 16,
-  },
   titleRow: {
     marginBottom: 12,
   },
   carouselRow: {
     marginBottom: 16,
-  },
-  secondTitleRow: {
-    marginBottom: 12,
-  },
-  categoryRow: {
-    marginBottom: 12,
-  },
-  featuredEventText: {
-    color: 'white',
-    fontFamily: 'NexaBold',
-    fontSize: 18,
-  },
-  eventsText: {
-    color: 'white',
-    fontFamily: 'NexaBold',
-    fontSize: 18,
-  },
-  categoryContainer: {
-    flexDirection: 'row',
-    flex: 1,
-    rowGap: 8,
-  },
-  selectedCategoryText: {
-    color: 'white',
-    fontFamily: 'NexaBold',
-    fontSize: 12,
-    marginRight: 12,
-  },
-  unselectedCategoryText: {
-    color: '#999999',
-    fontFamily: 'NexaLight',
-    fontSize: 12,
-    marginRight: 12,
-  },
-  floatingContainer: {
-    position: 'absolute',
-    width: 160,
-    bottom: 120,
-    right: 16,
-  },
-  footerContainer: {
-    height: 80,
-    position: 'absolute',
-    bottom: 0,
-    flex: 1,
-    right: 0,
-    left: 0,
   },
 });

@@ -50,13 +50,13 @@ const globalStyles = StyleSheet.create({
   selectedCategoryText: {
     color: 'white',
     fontFamily: 'NexaBold',
-    fontSize: 12,
+    fontSize: 14,
     marginRight: 12,
   },
   unselectedCategoryText: {
     color: '#999999',
     fontFamily: 'NexaLight',
-    fontSize: 12,
+    fontSize: 14,
     marginRight: 12,
   },
   categoryRow: {
