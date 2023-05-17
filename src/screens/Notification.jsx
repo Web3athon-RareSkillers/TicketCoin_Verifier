@@ -25,7 +25,10 @@ export default function Notification({navigation}) {
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}>
-                  <Image source={require('../assets/images/logo_mini.png')} />
+                  <Image
+                    style={{height: 20, width: 20}}
+                    source={require('../assets/images/logo_mini.png')}
+                  />
                   <Text
                     style={{
                       color: 'white',
