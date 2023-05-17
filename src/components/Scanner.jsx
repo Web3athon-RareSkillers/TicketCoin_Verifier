@@ -4,7 +4,7 @@ import RoundedButton from '../components/roundedButton';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 
-export default function Scanner() {
+export default function Scanner({emitScanState}) {
   const [scanResult, setScanResult] = useState(null);
   const [isScannerActive, setIsScannerActive] = useState(true);
 
@@ -39,10 +39,12 @@ export default function Scanner() {
   function handleBarCodeScanned({type, data}) {
     if (data) {
       setScanResult({success: true, data});
+      emitScanState(true);
       setIsScannerActive(false);
       Vibration.vibrate(100);
     } else {
       setScanResult({success: false});
+      emitScanState(false);
       setIsScannerActive(false);
       Vibration.vibrate(500, true);
     }
@@ -51,6 +53,7 @@ export default function Scanner() {
   function reactivateScanner() {
     setIsScannerActive(true);
     setScanResult(null);
+    emitScanState(false);
   }
 
   return (

@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {Image, StyleSheet, View, Text} from 'react-native';
 import VerifyAttendeeHeader from '../components/VerifyAttendeeHeader';
 import Footer from '../components/Footer';
 import Scanner from '../components/Scanner';
+import checkedIcon from '../assets/icons/checked.png';
+import uncheckedIcon from '../assets/icons/unchecked.png';
 
 export default function Scanning({navigation}) {
+  const [scanState, setScanState] = useState(false);
+  const handleScan = data => {
+    setScanState(data);
+    console.log('Received event from child with data:', scanState);
+  };
   return (
     <>
       <View style={styles.container}>
@@ -23,22 +30,34 @@ export default function Scanning({navigation}) {
           </View>
           <View style={styles.iconContainer}>
             <Image
-              style={[styles.checkIcon, styles.brightIcon]}
-              source={require('../assets/icons/unchecked.png')}
+              style={scanState ? styles.checkIconChecked : styles.checkIcon}
+              source={scanState ? checkedIcon : uncheckedIcon}
             />
-            <Text style={[styles.iconText, styles.textActive]}>Scan</Text>
+            <Text
+              style={[
+                styles.iconText,
+                scanState ? styles.textDone : styles.textInactive,
+              ]}>
+              Scan
+            </Text>
           </View>
           <View style={styles.iconContainer}>
             <Image
-              style={styles.checkIcon}
-              source={require('../assets/icons/unchecked.png')}
+              style={scanState ? styles.checkIconChecked : styles.checkIcon}
+              source={scanState ? checkedIcon : uncheckedIcon}
             />
-            <Text style={[styles.iconText, styles.textInactive]}>Success</Text>
+            <Text
+              style={[
+                styles.iconText,
+                scanState ? styles.textDone : styles.textInactive,
+              ]}>
+              Success
+            </Text>
           </View>
         </View>
 
         <View style={{flex: 1}}>
-          <Scanner></Scanner>
+          <Scanner emitScanState={handleScan}></Scanner>
         </View>
 
         <View style={styles.footerContainer}>
