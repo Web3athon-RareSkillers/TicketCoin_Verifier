@@ -17,20 +17,18 @@
         android:layout_centerInParent="true">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/logowhite"
             android:layout_gravity="center_horizontal" 
             android:scaleType="centerCrop" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ticketcoin"
-            android:layout_gravity="center_horizontal"
-            android:textSize="36sp"
-            android:fontFamily="@fonts/NexaBold"
-            android:textColor="#ffffff" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ticketcoin"
+            android:layout_gravity="center_horizontal" 
+            android:scaleType="fitCenter" />
 
     </LinearLayout>
 </RelativeLayout>

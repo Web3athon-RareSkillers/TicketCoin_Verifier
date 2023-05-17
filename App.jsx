@@ -77,8 +77,7 @@ function App() {
                       },
                     };
                   },
-                }}
-                initialRouteName="Splash">
+                }}>
                 <Stack.Screen
                   name="Splash"
                   options={{headerShown: false}}
