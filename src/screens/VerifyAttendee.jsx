@@ -1,11 +1,12 @@
 import React from 'react';
-import {Image, StyleSheet, View, Text} from 'react-native';
+import {Image, StyleSheet, View, Text, Dimensions} from 'react-native';
 import RoundedButton from '../components/roundedButton';
 import Footer from '../components/Footer';
 import Dropdown from '../components/Dropdown';
 import InputField from '../components/InputField';
 import VerifyAttendeeHeader from '../components/VerifyAttendeeHeader';
 import globalStyles from '../globalStyles';
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function VerifyAttendee({navigation}) {
   const handleDropdownSelect = option => {
@@ -60,7 +61,7 @@ export default function VerifyAttendee({navigation}) {
             placeholderText={'Type event name here'}
           />
         </View>
-        <View style={globalStyles.floatingContainer}>
+        <View style={styles.buttonContainer}>
           <RoundedButton
             onPress={() => navigation.navigate('Scanning')}
             title={'Proceed to scan    >> '}
@@ -148,6 +149,12 @@ const styles = StyleSheet.create({
   },
   textActive: {
     color: 'white',
+  },
+  buttonContainer: {
+    flex: 1,
+    width: SCREEN_WIDTH,
+    paddingHorizontal: 16,
+    maxHeight: 52,
   },
   buttonsWrap: {
     flex: 1,
