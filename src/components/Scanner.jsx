@@ -69,7 +69,7 @@ export default function Scanner({emitScanState}) {
         <Text
           style={scanResult.success ? styles.successText : styles.errorText}>
           {scanResult.success
-            ? `Success! Data: ${scanResult.data}`
+            ? `Success! Ticket state set to used`
             : 'Scan not successful'}
         </Text>
       ) : null}
